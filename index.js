@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
-import express from "express";
-import meow from "meow";
+import express from 'express';
+import meow from 'meow';
+import serveIndex from 'serve-index';
 
 const cli = meow(
   `
   Usage
-    $ live-serve-cli
+    $ live-serve
 
   Options
     --help, -h     Show this help message
@@ -18,23 +19,23 @@ const cli = meow(
     importMeta: import.meta,
     flags: {
       help: {
-        type: "boolean",
-        shortFlag: "h",
+        type: 'boolean',
+        shortFlag: 'h',
       },
       port: {
-        type: "number",
-        shortFlag: "p",
-        default: 80, // Set a default port
+        type: 'number',
+        shortFlag: 'p',
+        default: 80,
       },
       host: {
-        type: "string",
-        shortFlag: "ho",
-        default: "localhost", // Set a default host
+        type: 'string',
+        shortFlag: 'ho',
+        default: 'localhost',
       },
       dir: {
-        type: "string",
-        shortFlag: "d",
-        default: "./", // Set a default directory
+        type: 'string',
+        shortFlag: 'd',
+        default: './',
       },
     },
   }
@@ -50,9 +51,10 @@ if (cli.flags.help) {
   // Serve static files from the specified directory
   app.use(express.static(dir));
 
+  // Use serve-index to list files if no index.html is found
+  app.use(serveIndex(dir, { icons: true }));
+
   app.listen(port, host, () => {
-    console.log(
-      `Server is running and serving ${dir} at http://${host}:${port}`
-    );
+    console.log(`Server is running and serving ${dir} at http://${host}:${port}`);
   });
 }
