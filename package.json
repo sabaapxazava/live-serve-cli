@@ -1,7 +1,7 @@
 {
-  "name": "live-serve",
+  "name": "live-serve-cli",
   "bin": "./index.js",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "type": "module",
   "main": "index.js",

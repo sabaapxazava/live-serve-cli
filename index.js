@@ -6,7 +6,7 @@ import meow from "meow";
 const cli = meow(
   `
   Usage
-    $ live-serve
+    $ live-serve-cli
 
   Options
     --help, -h     Show this help message
