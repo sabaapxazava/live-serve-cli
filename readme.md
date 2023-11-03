@@ -7,13 +7,13 @@ A simple Node.js CLI to serve static files with Express.
 You can install this CLI globally using npm or yarn.
 
 ```bash
-npm install -g live-serve
+npm install -g live-serve-cli
 ```
 
 Or
 
 ```bash
-yarn global add live-serve
+yarn global add live-serve-cli
 ```
 
 ## Usage
